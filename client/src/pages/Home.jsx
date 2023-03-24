@@ -5,6 +5,10 @@ const RenderCards = ({ data, title }) => {
   if(data?.length > 0) {
     return data.map((post) => <Card key={post._id} {...post} />)
   }
+
+  return (
+    <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">{title}</h2>
+  )
 }
 
 const Home = () => {
@@ -37,7 +41,17 @@ const Home = () => {
               </h2>
             )}
             <div className="grid lg:grid-col-4 sm:grid-col-3 xs:grid-cols-2 grid-cols-1 gap-3">
-
+              {searchText ? (
+                <RenderCards 
+                  data={[]}
+                  title="No search results found"
+                />
+              ): (
+                <RenderCards 
+                  data={[]}
+                  title="No posts found"
+                />
+              )}
             </div>
           </>
         )}
